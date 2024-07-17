@@ -1,0 +1,11 @@
+FROM node:20-alpine
+WORKDIR '/app'
+
+COPY package.json .
+
+RUN npm --loglevel verbose install --dev
+
+RUN npm --loglevel verbose install -g @angular/cli
+
+COPY . .
+CMD ["ng", "serve", "--host", "0.0.0.0"]
